@@ -16,6 +16,16 @@ pipeline {
               }
             } 
             } 
+        
+         stage("Quality Gate"){
+          timeout(time: 1, unit: 'HOURS') {
+              def qg = PhoenixQualityGate()
+              if (qg.status != 'OK') {
+                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+              }
+          }
+      }
+        
   stage("nexus") {
             steps {
           withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'password', usernameVariable:'username')]) {
