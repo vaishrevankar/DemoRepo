@@ -24,6 +24,7 @@ pipeline {
               }
             }
         
+        }
   stage("nexus") {
             steps {
           withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'password', usernameVariable:'username')]) {
