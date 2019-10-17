@@ -27,19 +27,26 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try
+		{
 	 	String un = request.getParameter("username");
        String pw = request.getParameter("password");
        Check c = new Check();
        String output = c.checking(un, pw);
-       if(output.equals("success")){
+       if(output.equals("success"))
+       {
     	   response.sendRedirect("success.html");
        }
-       else {
+       else
+       {
     	   response.sendRedirect("failure.html");
        }
 
+	}catch(Exception e)
+		{
+			e.printStackTrace()
+		}
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
