@@ -27,8 +27,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		try
-		{
+		
 	 	String un = request.getParameter("username");
        String pw = request.getParameter("password");
        Check c = new Check();
@@ -41,11 +40,6 @@ public class LoginServlet extends HttpServlet {
        {
     	   response.sendRedirect("failure.html");
        }
-
-	}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
 	}
 
 	/**
