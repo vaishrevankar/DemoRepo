@@ -20,8 +20,8 @@
 <body>
 <div id="Style">
 <form action="LoginServlet" method="post">
-    Enter username :<input type="text" name="username" height="10"> <br><br><br>
-    Enter password :<input type="password" name="password" height="10"><br><br><br>
+    <b>Enter username :</b><input type="text" name="username" height="10"> <br><br><br><br>
+    <b>Enter password :</b><input type="password" name="password" height="10"><br><br><br><br>
     <center><input type="submit" value="Login"><center>
 </form>
 </div>
