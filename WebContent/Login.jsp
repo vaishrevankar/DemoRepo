@@ -13,15 +13,16 @@
         margin-top:50px;
         margin-left: 500px;
         padding-left:30px;
+        padding-top:50px;
     }
     </style>
 </head>
 <body>
 <div id="Style">
 <form action="LoginServlet" method="post">
-    Enter username :<input type="text" name="username" height="10"> <br><br>
-    Enter password :<input type="password" name="password" height="10"><br><br>
-    <input type="submit" value="Login">
+    Enter username :<input type="text" name="username" height="10"> <br><br><br>
+    Enter password :<input type="password" name="password" height="10"><br><br><br>
+    <center><input type="submit" value="Login"><center>
 </form>
 </div>
 </body>
