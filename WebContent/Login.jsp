@@ -4,13 +4,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
+<style>
+    #Style{
+        width:200px;
+        height:200px;
+        margin-top:50px;
+        margin-left: 200px;
+    }
+    </style>
 </head>
 <body>
 <div id="Style">
 <form action="LoginServlet" method="post">
-    Enter username :<input type="text" name="username"> <br>
-    Enter password :<input type="password" name="password"><br>
+    Enter username :<input type="text" name="username"> <br><br>
+    Enter password :<input type="password" name="password"><br><br>
     <input type="submit" value="Login">
 </form>
 </div>
