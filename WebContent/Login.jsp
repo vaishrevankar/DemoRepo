@@ -8,10 +8,11 @@
 <style>
     #Style{
         border: solid;
-        width:200px;
-        height:200px;
+        width:300px;
+        height:300px;
         margin-top:50px;
         margin-left: 500px;
+        padding-left:30px;
     }
     </style>
 </head>
