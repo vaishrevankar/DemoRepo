@@ -7,18 +7,19 @@
 <title>Login</title>
 <style>
     #Style{
+        border: solid;
         width:200px;
         height:200px;
         margin-top:50px;
-        margin-left: 200px;
+        margin-left: 500px;
     }
     </style>
 </head>
 <body>
 <div id="Style">
 <form action="LoginServlet" method="post">
-    Enter username :<input type="text" name="username"> <br><br>
-    Enter password :<input type="password" name="password"><br><br>
+    Enter username :<input type="text" name="username" height="10"> <br><br>
+    Enter password :<input type="password" name="password" height="10"><br><br>
     <input type="submit" value="Login">
 </form>
 </div>
