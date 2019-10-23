@@ -17,14 +17,14 @@ pipeline {
             } 
             } 
         
-        stage("Quality Gate") {
-            steps {
-              timeout(time: 5, unit: 'MINUTES') { // Just in case something goes wrong, pipeline will be killed after a timeout
-                waitForQualityGate abortPipeline: true //waiting for a task to be completed
-              }
-            }
+       // stage("Quality Gate") {
+          //  steps {
+             // timeout(time: 5, unit: 'MINUTES') { // Just in case something goes wrong, pipeline will be killed after a timeout
+               // waitForQualityGate abortPipeline: true //waiting for a task to be completed
+            //  }
+           // }
         
-        }
+       // }
   stage("nexus") {
             steps {
           withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'password', usernameVariable:'username')]) {
