@@ -36,8 +36,8 @@ pipeline {
         
         stage(" copying war to ansible"){
             steps{
-                withCredentials([string(credentialsId: 'ansible_credentials', passwordVariable: 'password')]){
-                    sh 'sshpass -p ${password} scp  target/WebApplication-1.war ansadmin@172.31.10.200:/opt/playbooks/target/'
+                withCredentials([string(credentialsId: 'ansible_credentials', variable: 'password')]){
+                    sh 'sshpass -p ${password} scp -v target/WebApplication-1.war ansadmin@172.31.10.200:/opt/playbooks/target/'
                 }
                //sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//playbooks', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
         }
