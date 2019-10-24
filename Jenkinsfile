@@ -54,7 +54,7 @@ pipeline {
         
         stage("slack"){
             steps{
-        slackSend baseUrl: 'https://hooks.slack.com/services/', color: 'good', message: 'welcome', tokenCredentialId: 'slack_creds'
+       slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#phoenix_final', color: 'good', message: 'welcome', tokenCredentialId: 'slack-cred', username: 'phoenix'
         }
         }
 }
