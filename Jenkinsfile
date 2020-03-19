@@ -9,22 +9,69 @@ pipeline {
                     sh 'mvn clean package'
                  }
             }
-           stage("SonarQube analysis") {
-            steps {
-              withSonarQubeEnv('sonarqube') {
-                sh 'mvn sonar:sonar'
-              }
-            } 
-            } 
+        stage('OverOps') {
+  steps {
+    OverOpsQuery(
+      // build configuration
+      applicationName: '${JOB_NAME}',
+      deploymentName: '${JOB_NAME}-${BUILD_NUMBER}',
+      serviceId: 'Sxxxxx',
+
+      // filter out event types
+      regexFilter: '"type":\\"*(Timer|Logged Warning)',
+
+      // mark build unstable
+      markUnstable: true,
+
+      // show top X issues
+      printTopIssues: 5,
+
+      // new error gate
+      newEvents: true,
+
+      // resurfaced error gate
+      resurfacedErrors: true,
+
+      // total error volume gate
+      maxErrorVolume: 0,
+
+      // unique error volume gate
+      maxUniqueErrors: 0,
+
+      // critical exception type gate
+      criticalExceptionTypes: 'NullPointerException,IndexOutOfBoundsException,InvalidCastException,AssertionError',
+
+      // increasing errors gate
+      activeTimespan: '12h',
+      baselineTimespan: '7d',
+      minVolumeThreshold: 20,
+      minErrorRateThreshold: 0.1,
+      regressionDelta: 0.5,
+      criticalRegressionDelta: 1.0,
+      applySeasonality: true,
+
+      // debug mode
+      debug: false
+    )
+    echo "OverOps Reliability Report: ${BUILD_URL}OverOpsReport/"
+  }
+}
+           //stage("SonarQube analysis") {
+            //steps {
+              //withSonarQubeEnv('sonarqube') {
+                //sh 'mvn sonar:sonar'
+              //}
+            //} 
+            //} 
         
-        stage("Quality Gate") {
-            steps {
-              timeout(time: 6, unit: 'MINUTES') { // Just in case something goes wrong, pipeline will be killed after a timeout
-                waitForQualityGate abortPipeline: true //waiting for a task to be completed
-              }
-            }
+        //stage("Quality Gate") {
+          //  steps {
+            //  timeout(time: 6, unit: 'MINUTES') { // Just in case something goes wrong, pipeline will be killed after a timeout
+              //  waitForQualityGate abortPipeline: true //waiting for a task to be completed
+              //}
+            //}
         
-       }
+       //}
   //stage("nexus") {
     //        steps {
       //    withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'password', usernameVariable:'username')]) {
